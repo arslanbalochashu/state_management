@@ -31,19 +31,19 @@ class _CountExampleState extends State<CountExample> {
       appBar: AppBar(
         title: const Text('Subscribe'),
       ),
-      body: Consumer<CountProvider>(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Consumer<CountProvider>(builder: ( context, value,  child) {
+              return Text(value.count.toString(),style: const TextStyle(fontSize: 50,),
+              );
+            },
 
-        builder: ( context, value,  child) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Text(value.count.toString(),style: const TextStyle(fontSize: 50,),),
-              )
-            ],
-          );
-        },
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
