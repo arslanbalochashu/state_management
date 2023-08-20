@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:state_management/provider/auth_provider.dart';
 import 'package:state_management/provider/count_provider.dart';
 import 'package:state_management/provider/example_one_provider.dart';
 import 'package:state_management/provider/favourite_provider.dart';
 import 'package:state_management/provider/theme_changer_provider.dart';
-import 'package:state_management/screens/dark_theme.dart';
-import 'package:state_management/screens/example_one.dart';
-import 'package:state_management/screens/favourit/favourite_screen.dart';
-import 'package:state_management/screens/notifyListnerScreen.dart';
-import 'screens/count_example.dart';
+import 'package:state_management/screens/login.dart';
+
 import 'package:provider/provider.dart';
 
 void main() {
@@ -26,10 +24,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create:  (_) => ExampleOneProvider(),),
         ChangeNotifierProvider(create:  (_) => FavouriteItemProvider(),),
         ChangeNotifierProvider(create:  (_) => ThemeChangerProvider(),),
+        ChangeNotifierProvider(create:  (_) => AuthProvider(),),
       ],
       child :Builder(
         builder: (BuildContext context) {
-          final themeChanger = Provider.of<ThemeChangerProvider>(context);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
@@ -43,7 +41,7 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.teal,
               )
             ),
-            home:  NotifyListnerScreen(),
+            home:  LoginScreen(),
           );
         },
 
